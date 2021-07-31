@@ -23,3 +23,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // CalcTek Apis
 Route::get('/calc-tek/evaluate', [CalcTekController::class, 'evaluate'])->name('calc_tek_evaluator')->middleware('request.logger');
+Route::get('/calc-tek/requests', [RequestController::class, 'index']);
