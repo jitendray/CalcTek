@@ -15,4 +15,20 @@ class RequestController extends Controller
         $requestLogs = RequestLog::where('name', self::CALC_TEK_EVALUATOR_ROUTE_NAME)->get(['id', 'response']);
         return CalcTekRequestResource::collection($requestLogs);
     }
+
+    public function delete(RequestLog $requestLog)
+    {
+        if ($requestLog->name === self::CALC_TEK_EVALUATOR_ROUTE_NAME) {
+            $requestLog->delete();
+            return response()->json(null);
+        }
+
+        return response(['errors' => ['Not a calc history id']], 422);
+    }
+
+    public function deleteAll()
+    {
+        RequestLog::where('name', self::CALC_TEK_EVALUATOR_ROUTE_NAME)->delete();
+        return response()->json(null);
+    }
 }

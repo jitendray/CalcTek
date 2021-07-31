@@ -24,3 +24,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // CalcTek Apis
 Route::get('/calc-tek/evaluate', [CalcTekController::class, 'evaluate'])->name('calc_tek_evaluator')->middleware('request.logger');
 Route::get('/calc-tek/requests', [RequestController::class, 'index']);
+Route::delete('calc-tek/request/{request_log}', [RequestController::class, 'delete']);
+Route::delete('calc-tek/requests', [RequestController::class, 'deleteAll']);
