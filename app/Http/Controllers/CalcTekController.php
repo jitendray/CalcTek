@@ -20,7 +20,10 @@ class CalcTekController extends Controller
                 'result' => $result
             ];
         } catch (\Exception $e) {
-            return response(['errors' => [$e->getMessage()]], 422);
+            return response([
+                'expression' => $expression,
+                'errors' => [$e->getMessage()]
+            ], 422);
         }
     }
 }

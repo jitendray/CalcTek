@@ -12,7 +12,8 @@ class RequestController extends Controller
 
     public function index(Request $request)
     {
-        $requestLogs = RequestLog::where('name', self::CALC_TEK_EVALUATOR_ROUTE_NAME)->get(['id', 'response']);
+        $requestLogs = RequestLog::where('name', self::CALC_TEK_EVALUATOR_ROUTE_NAME)
+            ->get(['id', 'response', 'request', 'status_code']);
         return CalcTekRequestResource::collection($requestLogs);
     }
 
