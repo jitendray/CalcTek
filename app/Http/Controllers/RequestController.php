@@ -16,9 +16,10 @@ class RequestController extends Controller
         return CalcTekRequestResource::collection($requestLogs);
     }
 
-    public function delete(RequestLog $requestLog)
+    public function delete(Request $request, int $id)
     {
-        if ($requestLog->name === self::CALC_TEK_EVALUATOR_ROUTE_NAME) {
+        $requestLog = RequestLog::find($id);
+        if ($requestLog && $requestLog->name === self::CALC_TEK_EVALUATOR_ROUTE_NAME) {
             $requestLog->delete();
             return response()->json(null);
         }
