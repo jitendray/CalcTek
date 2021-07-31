@@ -1,6 +1,8 @@
 
 ## About CalcTek
+Simple math expression evaluator with history of all requests.
 
+Note: No auth module is included.
 
 ## Installtion
 
@@ -9,6 +11,7 @@ git clone <repo>
 cd <repo>
 
 composer install
+php artisan migrate
 ```
 
 ### Server

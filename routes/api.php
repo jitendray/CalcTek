@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CalcTekController;
+use App\Http\Controllers\RequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // CalcTek Apis
-Route::get('/calc-tek/evaluate', [CalcTekController::class, 'evaluate']);
+Route::get('/calc-tek/evaluate', [CalcTekController::class, 'evaluate'])->name('calc_tek_evaluator')->middleware('request.logger');
