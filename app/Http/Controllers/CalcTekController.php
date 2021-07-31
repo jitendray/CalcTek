@@ -13,6 +13,9 @@ class CalcTekController extends Controller
             return response(['errors' => ['Empty expression']], 422);
         }
 
-        return math_eval($expression, null);
+        return [
+            'expression' => $expression,
+            'result' => math_eval($expression, null)
+        ];
     }
 }
