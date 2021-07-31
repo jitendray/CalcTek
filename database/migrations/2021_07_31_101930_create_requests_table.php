@@ -18,7 +18,6 @@ class CreateRequestsTable extends Migration
             $table->string('uri', 1024);
             $table->string('name')->nullable($value = true);
             $table->string('action')->nullable($value = true);
-            $table->string('method')->nullable($value = true);
             $table->json("request")->nullable($value = true);
             $table->string("response")->nullable($value = true);
             $table->smallInteger('status_code');

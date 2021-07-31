@@ -35,7 +35,6 @@ class RequestLogger
         $model->uri     =   $route->uri();
         $model->name    =   $route->getName();
         $model->action  =   $route->getActionName();
-        $model->method  =   $route->getActionMethod();
         $model->request =   json_encode($request->all());
         $model->response=   $response->getContent();
         $model->status_code =   $response->getStatusCode();
