@@ -9,13 +9,18 @@ class CalcTekController extends Controller
     public function evaluate(Request $request)
     {
         $expression = $request->get('expression');
-        if(empty($expression)) {
+        if (empty($expression)) {
             return response(['errors' => ['Empty expression']], 422);
         }
 
-        return [
-            'expression' => $expression,
-            'result' => math_eval($expression, null)
-        ];
+        try {
+            $result = math_eval($expression, null);
+            return [
+                'expression' => $expression,
+                'result' => $result
+            ];
+        } catch (\Exception $e) {
+            return response(['errors' => [$e->getMessage()]], 422);
+        }
     }
 }
